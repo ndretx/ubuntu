@@ -1,9 +1,11 @@
 import { Container, Movie, MovieList } from "./components";
 import { useEffect, useState } from "react";
 import { API_KEY } from "../../config/api.keys";
+import { Link } from "react-router-dom";
 
 export default function Home(){
     const [movies, setMovies] = useState<any[]>([])
+    // useState é um "Hook"
     const img_path = "https://image.tmdb.org/t/p/w500"
     useEffect(()=>{
         // consumir a api
@@ -11,6 +13,7 @@ export default function Home(){
         // fetch(`${API_URL}/popular?api_key=${API_KEY}&language=pt-BR&page=1`) fetch buscando informação em .src/config/api.keys.tsx
             .then(response => response.json())
             .then(data => setMovies(data.results))
+            // parametros "Arrow Functions"
 
     },[])
    
@@ -23,7 +26,7 @@ export default function Home(){
                         movies.map(movie =>{
                             return(
                                 <Movie>
-                                    <a href="#"><img src={`${img_path}${movie.poster_path}`} alt={movie.title}/> </a>
+                                    <Link to={`/details/${movie.id}`} ><img src={`${img_path}${movie.poster_path}`} alt={movie.title}/> </Link>
                                     {/* <a href="#"><img src={`${API_IMAGE)}${movie.poster_path}`} alt={movie.title}/> </a> */}
                                     <span>{movie.title}</span>
                                 </Movie>
