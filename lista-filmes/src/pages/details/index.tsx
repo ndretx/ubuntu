@@ -25,7 +25,7 @@ export default function Details(){
     return (
         <Container>
             <div>
-                <img className='backdrop' src={`${img_path}${setSelectedMovies.backdrop_path}`} alt='Texto qualquer'/>
+                <img className='backdrop' src={`${API_IMAGE}${setSelectedMovies.backdrop_path}`} alt='Texto qualquer'/>
                 <div className="movie">
                     <img className="movie-poster" src={`${API_IMAGE}${selectedMovies.poster_path}`} alt="Texto qualquer"  />
                     <div className="details">
