@@ -2,6 +2,7 @@ import { Container, Movie, MovieList } from "./components";
 import { useEffect, useState } from "react";
 import { API_KEY } from "../../config/api.keys";
 import { Link } from "react-router-dom";
+import { CastItem } from "../../components/cast/style";
 
 export default function Home(){
     const [movies, setMovies] = useState<any[]>([])
@@ -36,6 +37,7 @@ export default function Home(){
                     }
                    
                 </MovieList>
+                
         </Container>
     )   
 }

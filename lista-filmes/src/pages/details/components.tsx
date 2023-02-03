@@ -60,7 +60,7 @@ export const Container = styled.div`
         filter: blur(3px);
         -webkit-filter: blur(3px);
         opacity: 0.6;
-        width:100%
+        width:150%
     }
 
 
