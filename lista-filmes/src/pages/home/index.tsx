@@ -1,6 +1,6 @@
 import { Container, Movie, MovieList } from "./components";
 import { useEffect, useState } from "react";
-import { API_KEY } from "../../config/api.keys";
+import { API_KEY, API_URL } from "../../config/api.keys";
 import { Link } from "react-router-dom";
 import { CastItem } from "../../components/cast/style";
 
@@ -10,7 +10,7 @@ export default function Home(){
     const img_path = "https://image.tmdb.org/t/p/w500"
     useEffect(()=>{
         // consumir a api
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`)
+        fetch(`https://pokeapi.co/api/v2/pokemon`)
         // fetch(`${API_URL}/popular?api_key=${API_KEY}&language=pt-BR&page=1`) fetch buscando informação em .src/config/api.keys.tsx
             .then(response => response.json())
             .then(data => setMovies(data.results))
@@ -21,15 +21,18 @@ export default function Home(){
   
     return(
         <Container>
-            <h1>Movies</h1>
+            <h1>Pokedex</h1>
                 <MovieList>
                     {
-                        movies.map(movie =>{
+                        movies.map(pokemon =>{
+                            const pokeId = pokemon.url.split('/')
                             return(
                                 <Movie>
-                                    <Link to={`/details/${movie.id}`} ><img src={`${img_path}${movie.poster_path}`} alt={movie.title}/> </Link>
-                                    {/* <a href="#"><img src={`${API_IMAGE)}${movie.poster_path}`} alt={movie.title}/> </a> */}
-                                    <span>{movie.title}</span>
+                                   <Link to={`/details/${pokeId[6]}`}>
+                                    <img src={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokeId[6]}.svg`} alt={pokemon.name}/>
+                                     
+                                    <span>{pokemon.name}</span>
+                                    </Link>
                                 </Movie>
 
                             )

@@ -5,6 +5,7 @@ export const Container = styled.div`
    
     h1{
         margin: 3rem 0;
+        
     }
 
     .movie-poster {
@@ -38,7 +39,7 @@ export const Container = styled.div`
         trasition: 0.3s;
     }
      button:hover{
-        backhground: #5848c2;
+        backhground: #5846c2;
         
      }
 
